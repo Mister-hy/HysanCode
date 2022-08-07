@@ -3,10 +3,13 @@ import ApiConfig from '../config/config'
 import exceptionMessage from '../config/exceptionMessage'
 export class Http {
     static async  request(options){
+      let serviceUrl = options.baseUrl || 'api'
+      options.url = ApiConfig[serviceUrl].baseUrl + options.url
         wx.showLoading({
           title: '努力加载中...',
         })
-        options.url = ApiConfig.baseUrl + options.url
+        // options.url = ApiConfig.baseUrl + options.url
+      try{
         const response =   await wxToPromise('request',{...options})
         const {statusCode,data} =response
         if(statusCode<400){
@@ -19,6 +22,11 @@ export class Http {
             return
         }
         Http._showError(response.data.code,response.data.msg)
+      } catch(error){
+        wx.hideLoading()
+        Http._showError(1)
+        console.log(error);
+      }
     }
     static _showError(code,msg){
     let title = exceptionMessage[code] || msg || '发送未知错误'

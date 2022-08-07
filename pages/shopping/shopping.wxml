@@ -1,1 +1,3 @@
-<view></view>
+<view class="shopping">
+<m-swiper swiperList='{{swiperList}}'></m-swiper>
+</view>

@@ -7,21 +7,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    swiperList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let data = {
-      username : 'admin'
-    }
-    Pay.getNav(data).then(res=>{
-      console.log(res,'res');
+  onLoad(options) {
+    this.getBanner()
+  },
+  getBanner(){
+    Pay.getNav().then(res=>{
+      // console.log(res.data,'banner');
+      this.setData({
+        swiperList:res.data
+      })
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
