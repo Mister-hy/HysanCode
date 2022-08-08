@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "m-swiper":"../../components/swiper/swiper"
+    "m-swiper":"../../components/swiper/swiper",
+    "i-code-button":"/components/i-code-button/i-code-button"
   }
 }

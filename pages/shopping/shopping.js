@@ -19,6 +19,12 @@ Page({
     })
   },
   /**
+   * 获取用户信息
+   */
+    getShopCode(event){
+
+   },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
