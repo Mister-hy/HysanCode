@@ -1,6 +1,12 @@
-const ApiConfig  = {
- 'api':{
-  baseUrl:'https://admin.hxwendeng.com/api/app'
- }
+const ApiConfig = {
+    "api1": {
+        baseURL: 'https://admin.hxwendeng.com'
+    },
+    "api2": {
+        baseURL: 'http://jd.itying.com'
+    }
 }
-export default ApiConfig
+
+export  {
+    ApiConfig
+}

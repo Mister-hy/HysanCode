@@ -1,22 +1,20 @@
-import {Http} from '../utils/http'
+import {Http} from "../utils/http"
 
-export class Pay extends Http {
+export class TestModel extends Http {
     static getNav(){
-        return Http.request({
-            url:'/nav',
-            method:'GET'
-        })
+      return Http.request({
+        url:'/api/app/nav',
+        method:'GET',
+        data:{},
+        name:'api1'
+      })
     }
     static getBanner(){
         return Http.request({
-            url:'/banner',
-            method:'GET'
+          url:'/api/focus',
+          method:'GET',
+          data:{},
+          baseUrl:'api2'
         })
-    }
-    static getCourse(){
-        return Http.request({
-            url:'/recommend/appIndex',
-            method:'GET'
-        })
-    }
+      }
 }
