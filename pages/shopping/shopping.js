@@ -1,5 +1,6 @@
 import ShopModel from "../../model/shop"
 import {navigateTo} from '../../utils/navigate'
+import {addCart} from '../../common/cart'
 const app = getApp()
 Page({
 
@@ -38,7 +39,7 @@ Page({
   const result = response.result
   // 如果获取的商品数据小于等于0 说明没有条形码的数据   则不执行下面的操作
   if(result.length<=0) return
-  // addCart(result[0])
+  addCart(result[0])
   navigateTo('/pages/cart/cart')
   } catch(err){
 
