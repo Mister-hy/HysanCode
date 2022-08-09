@@ -1,4 +1,5 @@
 import ShopModel from "../../model/shop"
+import {navigateTo} from '../../utils/navigate'
 const app = getApp()
 Page({
 
@@ -13,7 +14,7 @@ Page({
    */
   async getBanner(){
     const response = await ShopModel.getShopBanner()
-    console.log(response);
+    // console.log(response);
     this.setData({
       bannerData : response.data
     })
@@ -21,8 +22,27 @@ Page({
   /**
    * 获取用户信息
    */
-    getShopCode(event){
+   async getShopCode(event){
+  //  console.log(event);
+  //  获取商品的条形码
+  const qrcode = event.detail 
+  // 如果商品码不存在 则不执行下面的操作
+  if(!qrcode) return
+  try{
+  //获取商品信息
+  const response = await ShopModel.getShopingInfo(qrcode)
+  // console.log(response);
+  // 如果商品信息获取失败  则不执行下面的操作
+  if(!response.success) return
+  // 获取商品数据
+  const result = response.result
+  // 如果获取的商品数据小于等于0 说明没有条形码的数据   则不执行下面的操作
+  if(result.length<=0) return
+  // addCart(result[0])
+  navigateTo('/pages/cart/cart')
+  } catch(err){
 
+  } 
    },
   /**
    * 生命周期函数--监听页面加载

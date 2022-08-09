@@ -1,3 +1,5 @@
+import {Field} from '../config/config'
+
 class Storage {
     // 获取本地存储的数据
    static set(key,value){
@@ -15,6 +17,20 @@ class Storage {
     static removeAll(){
     wx.clearStorageSync()
     }
+    /**
+ * 存储token 
+*/
+static setToken(token){
+ wx.setStorageSync(Field.logonCredentials, token)
 }
+    /**
+ * 存储用户信息
+*/
+static setUserInfo(userInfo){
+  wx.setStorageSync(Field.userInfoKey, userInfo)
+}
+}
+
+
 
 export default Storage
