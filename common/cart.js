@@ -14,20 +14,21 @@ const addCart = (data) =>{
         Storage.set('carts',carsArray)
     }else{
         const localData = Storage.get('carts')
-        hasShopData(data,localData)
+
         // console.log(hasShopData(data,localData));
-        if(hasLocalData(data,localData)){ 
+        if(hasShopData(data,localData)){ 
             localData.forEach(item=>{
                 if(item._id === data._id){
                  item.num+=1 
                 }
             })
             Storage.set('carts',localData)
+            console.log(Storage.set('carts',localData));
         }  else {
             data.num = 1 
             localData.push(data)
-            // Storage.set('carts',localData)
         }
+          Storage.set('carts',localData)
     }
 } 
 /**
